@@ -1,0 +1,18 @@
+#ifndef SSEG_CONFIG_H
+#define SSEG_CONFIG_H
+
+/*
+options:
+DIO_U8_PORTA
+DIO_U8_PORTB
+DIO_U8_PORTC
+DIO_U8_PORTD
+*/
+
+#define SSEG_U8_PORT     DIO_U8_PORTA
+#define SSEG_U8_EN_PORT  DIO_U8_PORTB
+
+#define SSEG_U8_EN_SSEG1  DIO_U8_PIN1
+#define SSEG_U8_EN_SSEG2  DIO_U8_PIN2
+
+#endif
