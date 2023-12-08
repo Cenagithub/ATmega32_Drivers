@@ -30,6 +30,12 @@
 #define TIMER_SET			20
 #define TIMER_CLEAR			25
 
+#define Timer1_IC_Noise_Canceller			1
+#define Timer1_IC_Edge_Select				2
+#define Timer1_MODE							3
+#define Timer1_PRESCALER					4
+#define Compare_Output_Mode_A				5
+#define Compare_Output_Mode_B				6
 
 
 
