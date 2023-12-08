@@ -11,7 +11,7 @@
 /************ Timer 0-2 /8 BIT *******/ 
 #define TIMER_NORMAL 		1
 #define TIMER_CTC 			2
-#define TIMER_FAST_PWM 	3
+#define TIMER_FAST_PWM 		3
 #define TIMER_PHASE_PWM 	4
 
 #define TIMER_DIV_BY_1			1
@@ -30,33 +30,33 @@
 #define TIMER_SET			20
 #define TIMER_CLEAR			25
 
-#define Timer1_IC_Noise_Canceller			1
-#define Timer1_IC_Edge_Select				2
-#define Timer1_MODE							3
-#define Timer1_PRESCALER					4
-#define Compare_Output_Mode_A				5
-#define Compare_Output_Mode_B				6
+#define Timer1_IC_Noise_Canceller		1
+#define Timer1_IC_Edge_Select			2
+#define Timer1_MODE						3
+#define Timer1_PRESCALER				4
+#define Compare_Output_Mode_A			5
+#define Compare_Output_Mode_B			6
 
 
 
 /************ Timer 1 /16 BIT *******/ 
 
 
-#define    TIMER1_NORMAL                               0
-#define    TIMER1_PWM_Phase_8bit					   1
-#define    TIMER1_PWM_Phase_9bit					   2
-#define    TIMER1_PWM_Phase_10bit					   3
-#define    TIMER1_CTC_OCR1A                            4
-#define    TIMER1_Fast_PWM_8bit                        5
-#define    TIMER1_Fast_PWM_9bit                        6
-#define    TIMER1_Fast_PWM_10bit                       7
-#define    TIMER1_PWM_Phase_Frequency_Correct_ICR1     8
-#define    TIMER1_PWM_Phase_Frequency_Correct_OCR1A    9
-#define    TIMER1_PWM_Phase__ICR1					   10
-#define    TIMER1_PWM_Phase__OCR1A					   11
-#define    TIMER1_CTC_ICR1                             12
-#define    TIMER1_FastPWM_ICR1                         14
-#define    TIMER1_FastPWM_OCR1A                        15
+#define TIMER1_NORMAL                               0
+#define TIMER1_PWM_Phase_8bit						1
+#define TIMER1_PWM_Phase_9bit						2
+#define TIMER1_PWM_Phase_10bit						3
+#define TIMER1_CTC_OCR1A                            4
+#define TIMER1_Fast_PWM_8bit                        5
+#define TIMER1_Fast_PWM_9bit                        6
+#define TIMER1_Fast_PWM_10bit                       7
+#define TIMER1_PWM_Phase_Frequency_Correct_ICR1     8
+#define TIMER1_PWM_Phase_Frequency_Correct_OCR1A    9
+#define TIMER1_PWM_Phase__ICR1						10
+#define TIMER1_PWM_Phase__OCR1A						11
+#define TIMER1_CTC_ICR1                             12
+#define TIMER1_FastPWM_ICR1                         14
+#define TIMER1_FastPWM_OCR1A                        15
 
 #define Enabled                      1
 #define Disabled                     0
