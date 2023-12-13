@@ -31,4 +31,5 @@ void DIO_voidSetPinDir(u8 Port, u8 Pin, u8 Direction);
 void DIO_voidSetPinVal(u8 Port, u8 Pin, u8 Value);
 u8	 DIO_u8GetPinVal(u8 Port, u8 Pin);
 void DIO_voidSetPortValue(u8 Port, u8 Value);
+void DIO_voidTogglePin(u8 Port , u8 Pin);
 #endif

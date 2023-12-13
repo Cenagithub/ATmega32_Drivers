@@ -44,10 +44,6 @@ void TIMER2_void_DisableCTCInt(void);
 
 void Timer1_void_Init();
 
-void Timer1_void_Set_ICR1_Reg(u16 Copy_u16value);
-void Timer1_void_Set_TCNT1_Reg(u16 Copy_u16value);
-void Timer1_void_Set_OCR1A_Reg(u16 Copy_u16value);
-void Timer1_void_Set_OCR1B_Reg(u16 Copy_u16value);
 
 void Timer1_void_Input_Capture_Interrupt_Enable();
 void Timer1_void_Input_Capture_Interrupt_Disable();

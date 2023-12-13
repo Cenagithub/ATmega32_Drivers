@@ -27,14 +27,191 @@
 #include "../HAL/LED/LED.h"
 #include "../HAL/LCD/LCD_int.h"
 
+#include "../MCAL/Schedular/Schedular_int.h"
+
+void Task22_RTOS2_SSEG_LED()
+{
+	u8 count = 0;
+	u8 counter =0;
+	void SSEG(void)
+	{
+		if(count<=9)
+		{
+			SSEG_voidDisplay(1,count);
+			//_delay_ms(1000);
+			count++;
+		}
+		else if (count>9)
+		{
+			count=1;
+		}
+	}
+	void LED(void)
+	{
+		if(counter== 0)
+		{
+			DIO_voidSetPinVal(DIO_U8_PORTC,2,DIO_U8_HIGH);
+			DIO_voidSetPinVal(DIO_U8_PORTC,7,DIO_U8_LOW);
+			DIO_voidSetPinVal(DIO_U8_PORTD,3,DIO_U8_LOW);
+			counter++;
+		}
+		else if(counter== 1)
+		{
+			DIO_voidSetPinVal(DIO_U8_PORTC,2,DIO_U8_LOW);
+			DIO_voidSetPinVal(DIO_U8_PORTC,7,DIO_U8_HIGH);
+			DIO_voidSetPinVal(DIO_U8_PORTD,3,DIO_U8_LOW);
+			counter++;
+
+		}
+		else if(counter== 2)
+		{
+			DIO_voidSetPinVal(DIO_U8_PORTC,2,DIO_U8_LOW);
+			DIO_voidSetPinVal(DIO_U8_PORTC,7,DIO_U8_LOW);
+			DIO_voidSetPinVal(DIO_U8_PORTD,3,DIO_U8_HIGH);
+			counter= 0;
+
+		}
+
+	}
+
+
+	void Kill(void)
+	{
+		RTOS_KillTask(2);
+	}
+
+	int main (void)
+	{
+		LED0_Init();
+		LED1_Init();
+		LED2_Init();
+		SSEG_voidInit();
+		
+		// fixed priority
+		RTOS_CreatTask(1000,&SSEG,0);
+		RTOS_CreatTask(10000,&LED ,1);
+
+
+		RTOS_Start();
+		GIE_voidEnable();
+		
+		while(1)
+		{
+			
+			
+		}
+		
 
 
 
+	}
+}
+
+void Task21_RTOS1_LED()
+{
+	void LED_1(void)
+	{
+
+		DIO_voidTogglePin(DIO_U8_PORTC ,DIO_U8_PIN2); //
+	}
+	void LED_2(void)
+	{
+		DIO_voidTogglePin(DIO_U8_PORTC ,DIO_U8_PIN7);
+
+	}
+	void LED_3(void)
+	{
+		DIO_voidTogglePin(DIO_U8_PORTD ,DIO_U8_PIN3);
+
+	}
+
+	void Kill(void)
+	{
+		RTOS_KillTask(3);
+	}
+
+	int main (void)
+	{
+		DIO_voidSetPinDir(DIO_U8_PORTC,DIO_U8_PIN7,DIO_U8_OUTPUT);
+		DIO_voidSetPinDir(DIO_U8_PORTC,DIO_U8_PIN2,DIO_U8_OUTPUT);
+		DIO_voidSetPinDir(DIO_U8_PORTD,DIO_U8_PIN3,DIO_U8_OUTPUT);
+
+		// fixed priority
+		RTOS_CreatTask(1000,&LED_1 ,0);
+		RTOS_CreatTask(2000,&LED_2 ,1);
+		RTOS_CreatTask(3000,&LED_3 ,3);
+		//RTOS_CreatTask(4000,&Kill ,0);
+
+		RTOS_Start();
+		GIE_voidEnable();
 
 
+		while(1)
+		{
+
+		}
+
+	}
+}
+
+
+
+void Task_20_Interrupt_with_3_LED()
+{
+	 DIO_voidSetPinDir(DIO_U8_PORTD,DIO_U8_PIN3,DIO_U8_OUTPUT);
+	 DIO_voidSetPinDir(DIO_U8_PORTC,DIO_U8_PIN2,DIO_U8_OUTPUT);
+	 DIO_voidSetPinDir(DIO_U8_PORTC,DIO_U8_PIN7,DIO_U8_OUTPUT);
+	 TIMER0_void_Init();
+	 TIMER0_void_SetTimerReg(247);
+	 TIMER0_void_EnableOVInt();
+	 GIE_voidEnable();
+	 while (1)
+	 {
+	 }
+}
  
- 
- void TASK22_Username_Pass_UART_Bluetooth(){
+void Task_20_isr()
+{
+	
+
+		static u8 counter = 0;
+		counter++;
+		
+		
+		if(counter == 62)
+		{
+			
+			DIO_voidSetPinVal(DIO_U8_PORTD,DIO_U8_PIN3,DIO_U8_HIGH);
+			
+			
+			
+		}
+		if(counter == 62*2)
+		{
+			
+			
+			DIO_voidSetPinVal(DIO_U8_PORTC,DIO_U8_PIN7,DIO_U8_HIGH);
+			
+			
+
+		}
+		
+		if(counter == 62*3)
+		{
+			
+			DIO_voidSetPinVal(DIO_U8_PORTC,DIO_U8_PIN2,DIO_U8_HIGH);
+			
+			
+			counter=0;
+
+		}
+		
+		
+		//TIMER0_void_SetTimerReg(247);
+		
+
+}
+void TASK19_Username_Pass_UART_Bluetooth(){
 	 
 	 UART_voidInit();
 	 
@@ -81,7 +258,7 @@
 	}
  }
  
-void TASK21_LCD_EEPROM(){
+void TASK18_LCD_EEPROM(){
 	
 	s8 arr[10];
 
@@ -168,7 +345,7 @@ void TASK21_LCD_EEPROM(){
 
 	return 0 ;
 }
-TASK20_UART_led_bluetooth()
+void TASK17_UART_led_bluetooth()
 {
 UART_voidInit();
 LED0_Init();
@@ -211,7 +388,7 @@ while(1)
 }
 	
 	
-void TASK18_TIMER_FASTPWM_LED(){
+void TASK16_TIMER_FASTPWM_LED(){
 	
 	 ADC_voidInit();
 	 DIO_voidSetPinDir(DIO_U8_PORTB, DIO_U8_PIN3,DIO_U8_OUTPUT);
@@ -234,7 +411,7 @@ void TASK18_TIMER_FASTPWM_LED(){
 	 } 
 }
 
-void TASK16_TIMER_CTC_ADC_POTENIOMETER(){
+void TASK15_TIMER_CTC_ADC_POTENIOMETER(){
 	ADC_voidInit();
 	DIO_voidSetPinDir(DIO_U8_PORTB, DIO_U8_PIN3,DIO_U8_OUTPUT);
 	u8 digital = 2;
@@ -255,7 +432,7 @@ void TASK16_TIMER_CTC_ADC_POTENIOMETER(){
 		}
 	}
 }
-void TASK15_TIMER_CTC_Freq(){
+void TASK14_TIMER_CTC_Freq(){
     
 	
 	 DIO_voidSetPinDir(DIO_U8_PORTA, DIO_U8_PIN0,DIO_U8_OUTPUT);
@@ -268,7 +445,7 @@ void TASK15_TIMER_CTC_Freq(){
 	{
 	}
 }
-void TASK15_ISR(){
+void TASK14_ISR(){
 	  //TIMER0_void_SetCompareVal(195);
 	  static u32 Loop_counter = 0;
 	  static u8 flag = 0;
@@ -285,7 +462,7 @@ void TASK15_ISR(){
 		  }
 	  }
 }
-void TASK14_TIMER_SQRWAVE_NORMAL(){
+void TASK13_TIMER_SQRWAVE_NORMAL(){
 
 	LED1_Init();
 	
@@ -299,7 +476,7 @@ void TASK14_TIMER_SQRWAVE_NORMAL(){
 	  {
 	  }
 }
-void TASK14_ISR(){
+void TASK13_ISR(){
 	static u32 Loop_counter = 0;
 	static u8 flag = 0;
 	Loop_counter++;
@@ -317,7 +494,7 @@ void TASK14_ISR(){
 		}
 	}
 }
-void TASK13_TIMER_LED(){
+void TASK12_TIMER_LED(){
 	 LED1_Init();
 	 
 	 TIMER0_void_Init();
@@ -326,7 +503,7 @@ void TASK13_TIMER_LED(){
 	 GIE_voidEnable();
 	 while(1){}
 }
-void TASK13_ISR(){
+void TASK12_ISR(){
 	
 	 static u8 counter = 0;
 	 static u8 flag = 0;
@@ -344,9 +521,7 @@ void TASK13_ISR(){
 		 TIMER0_void_SetTimerReg(247);
 	 }
 }
-
-
-void TASK12_KEYPAD_LCD_INTERRUPT(){
+void TASK11_KEYPAD_LCD_INTERRUPT(){
 	
 	 LCD_voidInit();
 	 LED1_Init();
@@ -361,7 +536,7 @@ void TASK12_KEYPAD_LCD_INTERRUPT(){
 	 }
 	
 }
-void TASK12_ISR(){
+void TASK11_ISR(){
 	
 		
 		KEYPAD_voidInit();
@@ -370,21 +545,21 @@ void TASK12_ISR(){
 		LCD_voidSendData(x);
 	
 }
-
-void Task10_INTERRUPT_LED_BUTTON(){
-	
-DIO_voidSetPinDir(DIO_U8_PORTD,DIO_U8_PIN2,DIO_U8_INPUT); //INT0 input
-DIO_voidSetPinDir(DIO_U8_PORTD,DIO_U8_PIN3,DIO_U8_OUTPUT); //activate pull up
-DIO_voidSetPinVal(DIO_U8_PORTD,DIO_U8_PIN3,DIO_U8_LOW); //LED output
-
-EXTI0_voidInit();
-EXTI0_voidEnable(); //PIE
-GIE_voidEnable(); //GIE
-while(1)
+void Task10_INTERRUPT_LED_BUTTON()
 {
 	
-}
-return 0 ;
+	DIO_voidSetPinDir(DIO_U8_PORTD,DIO_U8_PIN2,DIO_U8_INPUT); //INT0 input
+	DIO_voidSetPinDir(DIO_U8_PORTC,DIO_U8_PIN2,DIO_U8_OUTPUT); //activate pull up
+	DIO_voidSetPinVal(DIO_U8_PORTC,DIO_U8_PIN2,DIO_U8_LOW); //LED output
+	
+	EXTI0_voidInit();
+	EXTI0_voidEnable(); //PIE
+	GIE_voidEnable(); //GIE
+	while(1)
+	{
+		
+	}
+	return 0 ;
 	 
 }
 void TASK10_ISR_EXTI()
@@ -394,17 +569,19 @@ void TASK10_ISR_EXTI()
 
 		if(flag == 0)
 		{
-			DIO_voidSetPinVal(DIO_U8_PORTD , DIO_U8_PIN3, DIO_U8_HIGH);
+			DIO_voidSetPinVal(DIO_U8_PORTC , DIO_U8_PIN2, DIO_U8_HIGH);
 			flag = 1;
 		}
 		else
 		{
-			DIO_voidSetPinVal(DIO_U8_PORTD , DIO_U8_PIN3, DIO_U8_LOW);
+			DIO_voidSetPinVal(DIO_U8_PORTC , DIO_U8_PIN2, DIO_U8_LOW);
 			flag = 0;
 		}
 	
 	
+	
 }
+
 void Task9_Potentiometer_LCD_with_LED()
 {
 	LED0_Init();
@@ -460,8 +637,6 @@ void Task9_Potentiometer_LCD_with_LED()
 		}
 	}
 }
-	
-
 void Task8_Potentiometer()
 {
 	
