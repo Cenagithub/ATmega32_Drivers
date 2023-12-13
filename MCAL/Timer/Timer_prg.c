@@ -105,7 +105,7 @@ void TIMER0_void_DisableCTCInt(void)
 }
 /********************************    Timer 2    ************************************/
 
-void TIMER0_void_Init(void)
+void TIMER2_void_Init(void)
 {
 	#if(TIMER2_MODE == TIMER_NORMAL)
 	CLEAR_BIT(TCCR2 , 6);
@@ -193,7 +193,7 @@ void TIMER2_void_EnableCTCInt(void)
 	SET_BIT(TIMSK , 7);
 }
 
-void TIMER0_void_DisableCTCInt(void)
+void TIMER2_void_DisableCTCInt(void)
 {
 	CLEAR_BIT(TIMSK , 7);
 }
@@ -288,7 +288,7 @@ void TIMER1_void_Init(void)
 	CLEAR_BIT(TCCR1B , 1);	  //CS11
 	CLEAR_BIT(TCCR1B , 2);	  //CS12
 	
-	#if(TIMER0_PRESCALER == TIMER_DIV_BY_1)
+	#elif(TIMER0_PRESCALER == TIMER_DIV_BY_1)
 	SET_BIT(TCCR1B , 0);		 //CS10
 	CLEAR_BIT(TCCR1B , 1);		 //CS11
 	CLEAR_BIT(TCCR1B , 2);		 //CS12
@@ -309,11 +309,11 @@ void TIMER1_void_Init(void)
 	SET_BIT(TCCR1B , 0);		  //CS10
 	CLEAR_BIT(TCCR1B , 1);		  //CS11
 	SET_BIT(TCCR1B , 2);		  //CS12
-	#if(TIMER0_PRESCALER == Timer_Pre_External_T1_Falling)
+	#elif(TIMER0_PRESCALER == Timer_Pre_External_T1_Falling)
 	CLEAR_BIT(TCCR1B , 0);		  //CS10
 	SET_BIT(TCCR1B , 1);		  //CS11
 	SET_BIT(TCCR1B , 2);		  //CS12
-	#if(TIMER0_PRESCALER == Timer_Pre_External_T1_Raising)
+	#elif(TIMER0_PRESCALER == Timer_Pre_External_T1_Raising)
 	SET_BIT(TCCR1B , 0);		   //CS10
 	SET_BIT(TCCR1B , 1);		   //CS11
 	SET_BIT(TCCR1B , 2);		   //CS12
@@ -385,14 +385,5 @@ void TIMER1_void_Init(void)
 	void Timer1_Disable_Overflow_Interrupt()      
 	  {    CLEAR_BIT(TIMSK,2);     } // TIMSK
 
-	u8 Timer1_Read_IC_Interrupt_Flag()        
-	   {    return GET_BIT(TIFR,5); } // TIFR
-	u8 Timer1_Read_OCA_Interrupt_Flag()      
-	    {    return GET_BIT(TIFR,4); } // TIFR
-	u8 Timer1_Read_OCB_Interrupt_Flag()      
-	    {    return GET_BIT(TIFR,3); } // TIFR
-	u8 Timer1_Read_OVF_Interrupt_Flag()    
-	      {    return GET_BIT(TIFR,2); } // TIFR
-	u16	Timer1_Read_IC_Reg()                   
-	  { return ((ICR1H << 8) | ICR1L);} // ICR1H/L
+
 

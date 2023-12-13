@@ -10,7 +10,7 @@
 #define _EXTI_PRIVATE_H_
 
 
-#define SREG_Reg*((volatile u8*)0x5F) 
+#define SREG_Reg *((volatile u8*)0x5F) 
 #define MCUCR *((volatile u8*)0x55)
 #define MCUCSR *((volatile u8*)0x54)
 #define GICR *((volatile u8*)0x5B)

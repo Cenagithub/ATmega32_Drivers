@@ -138,3 +138,16 @@ void DIO_voidSetPortVal(u8 Port, u8 Value)
 		PORTD = Value;
 	}
 }
+
+void DIO_voidTogglePin(u8 Port , u8 Pin)
+{
+	switch (Port)
+	{
+		case DIO_U8_PORTA : TOGGLE_BIT( PORTA , Pin ) ; break;
+		case DIO_U8_PORTB : TOGGLE_BIT( PORTB , Pin ) ; break;
+		case DIO_U8_PORTC : TOGGLE_BIT( PORTC , Pin ) ; break;
+		case DIO_U8_PORTD : TOGGLE_BIT( PORTD , Pin ) ; break;
+		default	: 			break;
+	}
+
+}
