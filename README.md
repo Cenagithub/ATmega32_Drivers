@@ -1,6 +1,6 @@
 # Atmega32 Drivers
 
-## MCAL : 
+## HAL : 
 ### _ BUTTON 
 ### _ EEPROM 
 ### _ KEYPAD 
@@ -8,7 +8,7 @@
 ### _ LED 
 ### _SSEG 
 
-## HAL : 
+## MCAL : 
 ### _ADC 
 ### _DIO 
 ### _INTERRUPT 
@@ -16,3 +16,4 @@
 ### _TIMER 
 ### _TWI 
 ### _UART
+### _RTOS
