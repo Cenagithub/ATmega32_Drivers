@@ -44,14 +44,14 @@ void LCD_voidSendData(u8 LCD_u8_Data)
 	DIO_voidSetPinVal(LCD_U8_CONTROL_PORT, LCD_U8_RS ,DIO_U8_HIGH);
 	DIO_voidSetPinVal(LCD_U8_CONTROL_PORT, LCD_U8_RW ,DIO_U8_LOW);
 	
-	DIO_voidSetPortVal(LCD_U8_DATA_PORT , LCD_u8_Data);
+	DIO_voidSetPortVal(LCD_U8_DATA_PORT , LCD_u8_Data & 0b11110000);
 	
 	DIO_voidSetPinVal(LCD_U8_CONTROL_PORT, LCD_U8_EN ,DIO_U8_HIGH);
 	_delay_ms(1);
 	DIO_voidSetPinVal(LCD_U8_CONTROL_PORT, LCD_U8_EN ,DIO_U8_LOW);
 	_delay_ms(1);
 	
-	DIO_voidSetPortVal(LCD_U8_DATA_PORT , LCD_u8_Data << 4);
+	DIO_voidSetPortVal(LCD_U8_DATA_PORT , (LCD_u8_Data << 4)& 0b11110000);
 	
 	DIO_voidSetPinVal(LCD_U8_CONTROL_PORT, LCD_U8_EN ,DIO_U8_HIGH);
 	_delay_ms(1);
@@ -64,14 +64,14 @@ void LCD_voidSendCommand(u8 LCD_u8_Command)
 	DIO_voidSetPinVal(LCD_U8_CONTROL_PORT, LCD_U8_RS ,DIO_U8_LOW);
 	DIO_voidSetPinVal(LCD_U8_CONTROL_PORT, LCD_U8_RW ,DIO_U8_LOW);
 	
-	DIO_voidSetPortVal(LCD_U8_DATA_PORT , LCD_u8_Command);
+	DIO_voidSetPortVal(LCD_U8_DATA_PORT , LCD_u8_Command & 0b11110000);
 	
 	DIO_voidSetPinVal(LCD_U8_CONTROL_PORT, LCD_U8_EN ,DIO_U8_HIGH);
 	_delay_ms(1);
 	DIO_voidSetPinVal(LCD_U8_CONTROL_PORT, LCD_U8_EN ,DIO_U8_LOW);
 	_delay_ms(1);
 	
-	DIO_voidSetPortVal(LCD_U8_DATA_PORT , LCD_u8_Command << 4);
+	DIO_voidSetPortVal(LCD_U8_DATA_PORT ,( LCD_u8_Command << 4)& 0b11110000);
 	
 	DIO_voidSetPinVal(LCD_U8_CONTROL_PORT, LCD_U8_EN ,DIO_U8_HIGH);
 	_delay_ms(1);
