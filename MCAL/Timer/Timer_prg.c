@@ -13,73 +13,73 @@
 /********************************    Timer 0    ************************************/
 void TIMER0_void_Init(void)
 {
-	#if(TIMER0_MODE == TIMER_NORMAL)
-		CLEAR_BIT(TCCR0 , 6);
-		CLEAR_BIT(TCCR0 , 3);
+	#if(TIMER0_MODE == TIMER0_NORMAL)
+	CLEAR_BIT(TCCR0 , 6);
+	CLEAR_BIT(TCCR0 , 3);
 	
-	#elif(TIMER0_MODE == TIMER_CTC)
-		CLEAR_BIT(TCCR0 , 6);
-		SET_BIT(TCCR0 , 3);
-		
-	#elif(TIMER0_MODE == TIMER_FAST_PWM )
-		SET_BIT(TCCR0 , 6);
-		SET_BIT(TCCR0 , 3);
-		
-	#elif(TIMER0_MODE == TIMER_PHASE_PWM )
-		SET_BIT(TCCR0 , 6);
-		CLEAR_BIT(TCCR0 , 3);
-		
+	#elif(TIMER0_MODE == TIMER0_CTC)
+	CLEAR_BIT(TCCR0 , 6);
+	SET_BIT(TCCR0 , 3);
+	
+	#elif(TIMER0_MODE == TIMER0_FAST_PWM )
+	SET_BIT(TCCR0 , 6);
+	SET_BIT(TCCR0 , 3);
+	
+	#elif(TIMER0_MODE == TIMER0_PHASE_PWM )
+	SET_BIT(TCCR0 , 6);
+	CLEAR_BIT(TCCR0 , 3);
+	
 	#endif
 
-	#if(TIMER0_COM_EVENT == TIMER_NO_ACTION)
+	#if(TIMER0_COM_EVENT == TIMER0_NO_ACTION)
 	CLEAR_BIT(TCCR0 , 4);
 	CLEAR_BIT(TCCR0 , 5);
 	
 	
-	#elif(TIMER0_COM_EVENT == TIMER_TOGGLE)
+	#elif(TIMER0_COM_EVENT == TIMER0_TOGGLE)
 	SET_BIT(TCCR0 , 4)
 	CLEAR_BIT(TCCR0 , 5);
-	#elif(TIMER0_COM_EVENT == TIMER_CLEAR )
+	#elif(TIMER0_COM_EVENT == TIMER0_CLEAR )
 	CLEAR_BIT(TCCR0 , 4);
 	SET_BIT(TCCR0 , 5);
-	#elif(TIMER0_COM_EVENT == TIMER_SET )
+	#elif(TIMER0_COM_EVENT == TIMER0_SET )
 	SET_BIT(TCCR0 , 4);
 	SET_BIT(TCCR0 , 5);
 
 	
 	#endif
 	
-	#if(TIMER0_PRESCALER == TIMER_DIV_BY_1)
-		SET_BIT(TCCR0 , 0);
-		CLEAR_BIT(TCCR0 , 1);
-		CLEAR_BIT(TCCR0 , 2);
+	#if(TIMER0_PRESCALER == TIMER0_DIV_BY_1)
+	SET_BIT(TCCR0 , 0);
+	CLEAR_BIT(TCCR0 , 1);
+	CLEAR_BIT(TCCR0 , 2);
 	
-	#elif(TIMER0_PRESCALER == TIMER_DIV_BY_8)
-		CLEAR_BIT(TCCR0 , 0);
-		SET_BIT(TCCR0 , 1);
-		CLEAR_BIT(TCCR0 , 2);
-	#elif(TIMER0_PRESCALER == TIMER_DIV_BY_64 )
-		SET_BIT(TCCR0 , 0);
-		SET_BIT(TCCR0 , 1);
-		CLEAR_BIT(TCCR0 , 2);
-	#elif(TIMER0_PRESCALER == TIMER_DIV_BY_256 )
-		CLEAR_BIT(TCCR0 , 0);
-		CLEAR_BIT(TCCR0 , 1);
-		SET_BIT(TCCR0 , 2);
-	#elif(TIMER0_PRESCALER == TIMER_DIV_BY_1024 )
-		SET_BIT(TCCR0 , 0);
-		CLEAR_BIT(TCCR0 , 1);
-		SET_BIT(TCCR0 , 2);
-		
+	#elif(TIMER0_PRESCALER == TIMER0_DIV_BY_8)
+	CLEAR_BIT(TCCR0 , 0);
+	SET_BIT(TCCR0 , 1);
+	CLEAR_BIT(TCCR0 , 2);
+	#elif(TIMER0_PRESCALER == TIMER0_DIV_BY_64 )
+	SET_BIT(TCCR0 , 0);
+	SET_BIT(TCCR0 , 1);
+	CLEAR_BIT(TCCR0 , 2);
+	#elif(TIMER0_PRESCALER == TIMER0_DIV_BY_256 )
+	CLEAR_BIT(TCCR0 , 0);
+	CLEAR_BIT(TCCR0 , 1);
+	SET_BIT(TCCR0 , 2);
+	#elif(TIMER0_PRESCALER == TIMER0_DIV_BY_1024 )
+	SET_BIT(TCCR0 , 0);
+	CLEAR_BIT(TCCR0 , 1);
+	SET_BIT(TCCR0 , 2);
+	
 	#endif
 }
 
-void TIMER0_void_SET_BITTimerReg(u8 Copy_u8Val)
+void TIMER0_void_SetTimerReg(u8 Copy_u8Val)
 {
 	TCNT0 = Copy_u8Val ;
 }
 
-void TIMER0_void_SET_BITCompareVal(u8 Copy_u8Val)
+void TIMER0_void_SetCompareVal(u8 Copy_u8Val)
 {
 	OCR0 = Copy_u8Val ;
 }
@@ -168,12 +168,12 @@ void TIMER2_void_Init(void)
 	#endif
 }
 
-void TIMER2_void_SET_BITTimerReg(u8 Copy_u8Val)
+void TIMER2_void_SetTimerReg(u8 Copy_u8Val)
 {
 	TCNT2 = Copy_u8Val ;
 }
 
-void TIMER2_void_SET_BITCompareVal(u8 Copy_u8Val)
+void TIMER2_void_SetCompareVal(u8 Copy_u8Val)
 {
 	OCR2 = Copy_u8Val ;
 }
