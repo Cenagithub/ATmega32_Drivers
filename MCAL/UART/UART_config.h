@@ -15,13 +15,14 @@
 	8-BIT
 	9-BIT
 */
-#define UART_DATA_FRAME	   DATA_8_BIT
+#define UART_DATA_FRAME	   DATA_9_BIT
 
 
  /* UART Mode
  
  Asynchronous
  Synchronous
+
 */
  
  #define UART_MODE		ASYNCHRONOUS
