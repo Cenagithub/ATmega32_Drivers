@@ -64,9 +64,8 @@
 #define Timer1_IC_Raising_Edge       1
 #define Timer1_IC_Falling_Edge       0
 
-#define SREG            *((volatile u8 *)0x5F)
-#define TIMSK			*((volatile u8*)0X59)
-#define TIFR			*((volatile u8*)0X58)
+#define SREG            *((volatile u8*)0x5F)
+
 
 /*Timer0*/
 #define TCCR0			*((volatile u8*)0X53)
@@ -76,18 +75,12 @@
 /*Timer1*/
 #define TCCR1A			*((volatile u8*)0X4F)
 #define TCCR1B			*((volatile u8*)0X4E)
-#define TCNT1H          *((volatile u8 *)(0x4D))
-#define TCNT1L          *((volatile u8 *)(0x4C))
-#define TCNT1			*((volatile u16*)0X4C)    /* u16 for HIGH & LOW */
-#define OCR1AL          *((volatile u8 *)(0x4A))
-#define OCR1AH          *((volatile u8 *)(0x4B))
-#define OCR1A			*((volatile u16*)0X4A)
-#define OCR1BL          *((volatile u8 *)(0x48))
-#define OCR1BH          *((volatile u8 *)(0x49))
-#define OCR1B			*((volatile u16*)0X48)
-#define ICR1H           *((volatile u8 *)(0x47))
-#define ICR1L           *((volatile u8 *)(0x46))
-#define ICR1			*((volatile u16*)0X46)
+#define ICRH		    *((volatile u8*)0x47)
+#define ICRL            *((volatile u8*)0x46)
+#define TIMSK			*((volatile u8*)0X59)
+#define TIFR			*((volatile u8*)0X58)
+#define ACSR			*((volatile u8*)0x28)
+
 
 /*Timer2*/
 
@@ -96,6 +89,6 @@
 #define TCNT2			*((volatile u8*)0X44)
 #define OCR2			*((volatile u8*)0X43)
 
-#define WDTCR        *((volatile u8 *)(0x41))
+#define WDTCR			*((volatile u8 *)0x41)
 
 #endif

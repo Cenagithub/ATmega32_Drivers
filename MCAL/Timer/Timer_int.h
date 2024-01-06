@@ -42,17 +42,10 @@ void TIMER2_void_EnableCTCInt(void);
 void TIMER2_void_DisableCTCInt(void);
 /***********************************************************************************/
 
-void Timer1_void_Init();
+void TIMER1_void_Init();
+void TIMER1_void_ICU();
+void TIMER1_void_ICU();
 
-
-void Timer1_void_Input_Capture_Interrupt_Enable();
-void Timer1_void_Input_Capture_Interrupt_Disable();
-void Timer1_void_Compare_A_Interrupt_Enable();
-void Timer1_void_Compare_A_Interrupt_Disable();
-void Timer1_void_Compare_B_Interrupt_Enable();
-void Timer1_void_Compare_B_Interrupt_Disable();
-void Timer1_void_Overflow_Interrupt_Enable();
-void Timer1_void_Overflow_Interrupt_Disable();
 
 
 #endif

@@ -365,25 +365,12 @@ void TIMER1_void_Init(void)
 	 #endif
 	
 	
-	void Timer1_Enable_Input_Capture_Interrupt()  
+	void Timer1_Enable_ICU()  
 	  {		SET_BIT(TIMSK,5);     } // TIMSK
-	void Timer1_Disable_Input_Capture_Interrupt() 
+		  
+	void Timer1_Disable_ICU() 
 	  {    CLEAR_BIT(TIMSK,5);     } // TIMSK
 
-	void Timer1_Enable_Compare_A_Interrupt()     
-	   {      SET_BIT(TIMSK,4);     } // TIMSK
-	void Timer1_Disable_Compare_A_Interrupt()   
-	    {    CLEAR_BIT(TIMSK,4);     } // TIMSK
-
-	void Timer1_Enable_Compare_B_Interrupt()      
-	  {      SET_BIT(TIMSK,3);     } // TIMSK
-	void Timer1_Disable_Compare_B_Interrupt()    
-	   {    CLEAR_BIT(TIMSK,3);     } // TIMSK
-
-	void Timer1_Enable_Overflow_Interrupt()       
-	  {      SET_BIT(TIMSK,2);     } // TIMSK
-	void Timer1_Disable_Overflow_Interrupt()      
-	  {    CLEAR_BIT(TIMSK,2);     } // TIMSK
 
 
 

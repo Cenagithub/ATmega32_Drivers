@@ -74,6 +74,5 @@
 #define Timer1_IC_Edge_Select          Timer1_IC_Falling_Edge
 #define Timer1_MODE                   TIMER1_NORMAL
 #define Timer1_PRESCALER              TIMER_DIV_BY_1024
-#define Compare_Output_Mode_A          TIMER_NO_ACTION
-#define Compare_Output_Mode_B          TIMER_NO_ACTION
+
 #endif
